@@ -7,13 +7,21 @@ import { useAuthStore } from '../store/auth/useAuthStore';
 const router = useRouter();
 const authStore = useAuthStore(); 
 
-
 const redirectMain = () => {
   router.push('/');
 }
 
 const redirectLogin = () => {
   router.push('/login');
+}
+
+const redirectRegistration = () => {
+  router.push('/registration');
+}
+
+const logout = async () => {
+  await authStore.logout();
+  router.replace('/');
 }
 </script>
 
@@ -32,6 +40,7 @@ const redirectLogin = () => {
       />
       <MyButton
       v-if="!authStore.isLoggedIn"
+      @click="redirectRegistration()"
       :content="'Sign up'"
       :color="'white'"
       :size="'small'"
@@ -41,6 +50,7 @@ const redirectLogin = () => {
       :content="'Logout'"
       :color="'black'"
       :size="'small'"
+      @click="logout"
       />
     </div>
   </div>

@@ -11,6 +11,8 @@ export const useAuthStore = defineStore('authStore',() => {
 
   // 2. Getters
 
+
+
   // 3. Actions
   const clearAuthStore = () => {
     isLoggedIn.value = false;
@@ -52,6 +54,29 @@ export const useAuthStore = defineStore('authStore',() => {
       isLoggedIn.value = true;
     } catch (error) {
       clearAuthStore();
+    }
+  }
+
+  const logout = async () => {
+    try {
+      const url= '/api/logout';
+      
+      await myAxios.post(url);
+    } catch(error) {
+      console.error(error);
+    } finally {
+      clearAuthStore();
+    }
+  }
+
+  const registration = async (data) => {
+    try {
+      const url = '/api/registration';
+
+      await myAxios.post(url, data);
+      return;
+    } catch (error) {
+      console.error(error);
       throw error;
     }
   }
@@ -67,5 +92,7 @@ export const useAuthStore = defineStore('authStore',() => {
     // Actions
     login,
     reissue,
+    logout,
+    registration,
   }
 });
