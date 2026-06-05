@@ -29,17 +29,11 @@ export const useAuthStore = defineStore('authStore',() => {
       accessToken.value = data.accessToken;
       userInfo.value = data.user;
       isLoggedIn.value = true;
-      console.log(data);
     } catch(error) {
-      console.log(error.response);
-      if(error.response) {
-        if(error.response.data.code === 'E01') {
-          alert(error.response.data.data);
-          return;
-        }
-      }
+      console.log(error);
+      
 
-      useMyErrorStore().setErrorInfo(error);
+      throw error;
     }
   }
 
