@@ -35,6 +35,7 @@ import { useMyErrorStore } from '../../store/error/useMyErrorStore.js';
 // }
 // -----------------스토어로 이관 end-------------------------
 
+
 const router = useRouter();
 const postIndexStore = usePostIndexStore();
 const myErrorStore = useMyErrorStore();
