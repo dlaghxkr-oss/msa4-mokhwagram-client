@@ -33,7 +33,7 @@ const redirectPostCreate = () => {
         ></div>
         <div
           class="bg-image-square redirect-icon-posts-create"
-          style="background-image: url('/icons/plus.png');"
+          style="background-image: url('/icons/plus-sign.png');"
           @click="redirectPostCreate()"
         ></div>
         <div
